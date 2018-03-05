@@ -532,6 +532,7 @@ class GeminiLoader(object):
             gt_quals = var.gt_quals
             #gt_copy_numbers = np.array(var.gt_copy_numbers, np.float32)  # 1.0 2.0 2.1 -1
             gt_copy_numbers = None
+            gt_filters = var.format("FT")  # CHANGE: Getting the filter fields as a numpy array
             if not self.args.skip_pls:
                 gt_phred_ll_homref = var.gt_phred_ll_homref
                 gt_phred_ll_het = var.gt_phred_ll_het
@@ -567,6 +568,7 @@ class GeminiLoader(object):
                    gt_phases=pack_blob(gt_phases), gt_depths=pack_blob(gt_depths),
                    gt_ref_depths=pack_blob(gt_ref_depths), gt_alt_depths=pack_blob(gt_alt_depths),
                    gt_alt_freqs=pack_blob(gt_alt_freqs),
+                   gt_filters=pack_blob(gt_filters),  # CHANGE: Adding filters to the variant entry
                    gt_quals=pack_blob(gt_quals), gt_copy_numbers=pack_blob(gt_copy_numbers),
                    call_rate=call_rate, in_dbsnp=bool(in_dbsnp),
                    rs_ids=rs_ids,

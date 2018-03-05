@@ -116,6 +116,7 @@ def create_tables(path, effect_fields=None, pls=True):
     else:
         effect_string = ""
 
+    # CHANGE: New fields needed to be included in this list
     db = dict(variants="""
     chrom varchar(15),
     start integer,
@@ -136,6 +137,7 @@ def create_tables(path, effect_fields=None, pls=True):
     gt_ref_depths blob,
     gt_alt_depths blob,
     gt_alt_freqs blob,
+    gt_filters blob,
     gt_quals blob,
     gt_copy_numbers blob,
     %s,
