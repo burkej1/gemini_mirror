@@ -532,7 +532,11 @@ class GeminiLoader(object):
             gt_quals = var.gt_quals
             #gt_copy_numbers = np.array(var.gt_copy_numbers, np.float32)  # 1.0 2.0 2.1 -1
             gt_copy_numbers = None
-            gt_filters = var.format("FT")  # CHANGE: Getting the filter fields as a numpy array
+            # CHANGE: Getting the filter fields as a numpy array
+            gt_filters = var.format("FT")
+            # Checking to see if filter tags exist (GATK doesn't add them if every site passes)
+            if gt_filters is None:
+                gt_filters = np.array(["PASS"] * len(gt_types))
             if not self.args.skip_pls:
                 gt_phred_ll_homref = var.gt_phred_ll_homref
                 gt_phred_ll_het = var.gt_phred_ll_het
