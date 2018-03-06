@@ -1,6 +1,12 @@
 GEMINI - integrative exploration of genetic variation and genome annotations.
 =============================================================================
 
+Modifications
+========
+Mirror of gemini: https://github.com/arq5x/gemini
+
+Modified to also read in genotype filter information to the database.
+
 ![overview](https://github.com/arq5x/gemini/blob/master/docs/images/overview.png)
 
 Overview
